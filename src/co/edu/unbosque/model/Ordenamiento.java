@@ -5,9 +5,8 @@ import java.util.Random;
 
 public class Ordenamiento {
 
-    private int [][] matriz;
+    public int [][] matriz;
     private int  tamano;
-
 
     public Ordenamiento (int tamano) {
         matriz = new int[tamano][tamano];
@@ -21,7 +20,6 @@ public class Ordenamiento {
                 Random r = new Random();
                 double numeroM= r.nextInt(10000);
                 matriz[i][j] = (int) numeroM;
-                System.out.println(matriz[i][j]+", ");
             }
         }
     }
@@ -48,7 +46,6 @@ public class Ordenamiento {
                 if(matriz[i][j]==numeroIngresado) {
                     contador++;
                     mensaje="El numero "+numeroIngresado+" se encuentra "+contador+" veces en la matriz";
-
                 }else {
                     mensaje="El numero no se encuentra en la matriz";
                 }

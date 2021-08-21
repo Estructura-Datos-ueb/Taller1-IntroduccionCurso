@@ -9,13 +9,11 @@ public class VistaConsola {
     private String tamano;
 
     public VistaConsola() {
-
         tamano =  JOptionPane.showInputDialog("Porfavor ingrese el tamaño de la matriz");
-
     }
 
     public void mostrarInformacion( String mensaje) {
-        System.out.println(mensaje);
+        System.out.print(mensaje);
     }
 
     public String leerDato(String mensaje) {

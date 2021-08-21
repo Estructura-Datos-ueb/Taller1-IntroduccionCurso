@@ -11,9 +11,17 @@ public class Controller {
 
     public Controller (){
         v = new VistaConsola();
-        System.out.print(Integer.parseInt(v.getTamano()));
+        System.out.println(Integer.parseInt(v.getTamano()));
         o = new Ordenamiento( Integer.parseInt(v.getTamano()));
-        //v.leerDato(o.buscarNumero());
+        mostrarVista();
     }
 
+    public void mostrarVista(){
+        for(int i=0;i<(Integer.parseInt(v.getTamano()));i++){
+            for(int j=0;j<(Integer.parseInt(v.getTamano()));j++){
+                v.mostrarInformacion(o.matriz[i][j]+", ");
+            }
+            System.out.println("\n");
+        }
+    }
 }
