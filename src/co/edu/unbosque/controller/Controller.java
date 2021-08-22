@@ -26,5 +26,14 @@ public class Controller {
             System.out.println("\n");
         }
     }
+<<<<<<< HEAD
 
+=======
+    
+    public void test(){
+    	System.out.println("Uno");
+    }
+    
+    
+>>>>>>> e33cf57dff511d54efec447fb92db757f3724a18
 }
