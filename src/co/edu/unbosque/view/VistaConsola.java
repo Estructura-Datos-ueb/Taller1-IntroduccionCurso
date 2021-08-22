@@ -11,6 +11,9 @@ public class VistaConsola {
     public VistaConsola() {
         tamano =  JOptionPane.showInputDialog("Porfavor ingrese el tamaño de la matriz");
     }
+    public void ingresarinformacion(String mensaje){
+        tamano =  JOptionPane.showInputDialog(mensaje);
+    }
 
     public void mostrarInformacion( String mensaje) {
         System.out.print(mensaje);

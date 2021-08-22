@@ -9,8 +9,9 @@ public class Ordenamiento {
     private int  tamano;
 
     public Ordenamiento (int tamano) {
-        matriz = new int[tamano][tamano];
         this.tamano= tamano;
+        matriz = new int[tamano][tamano];
+
         llenarMatriz();
     }
 
@@ -18,43 +19,57 @@ public class Ordenamiento {
         for(int i=0;i<tamano;i++) {
             for(int j=0;j<tamano;j++) {
                 Random r = new Random();
-                double numeroM= r.nextInt(10000);
+                double numeroM= r.nextInt(10);
                 matriz[i][j] = (int) numeroM;
             }
         }
     }
-
+//Metodo para calcular el promedio de la matriz
+    public String calcularPromedio(){
+        String mensaje = "";
+        return mensaje;
+    }
+//Metodo para calcular el promedio de la matriz
     public String buscarNumero(int numeroIngresado) {
-        String mensaje = null;
-        for(int i=0;i<(tamano-1);i++) {
-            for(int j=0;j<(tamano-1);j++) {
+        String mensaje = "El numero no se encuentra en la matriz";
+        int contador=0;
+        for(int i=0;i<=(tamano-1);i++) {
+            for(int j=0;j<=(tamano-1);j++) {
                 if(matriz[i][j]==numeroIngresado) {
                     mensaje="El numero "+numeroIngresado+" se encuentra en la matriz";
+                    contador=1;
                     break;
-                }else {
-                    mensaje="El numero no se encuentra en la matriz";
                 }
+            }
+            if(contador==1){
+                break;
             }
         }
         return mensaje;
     }
+//Metodo para calcular el promedio de la matriz
     public String buscarNumeroRepetido(int numeroIngresado) {
-        String mensaje = null;
-        int contador = 0;
-        for(int i=0;i<tamano;i++) {
-            for(int j=0;i<tamano;j++) {
+        String mensaje = "El numero no se encuentra repetido en la matriz";
+        int contador=0;
+        for(int i=0;i<=(tamano-1);i++) {
+            for(int j=0;j<=(tamano-1);j++) {
                 if(matriz[i][j]==numeroIngresado) {
                     contador++;
-                    mensaje="El numero "+numeroIngresado+" se encuentra "+contador+" veces en la matriz";
-                }else {
-                    mensaje="El numero no se encuentra en la matriz";
                 }
+            }
+            if(contador>=1){
+                mensaje="El numero "+numeroIngresado+" se encuentra repetido "+contador+" en la matriz";
             }
         }
         return mensaje;
     }
-
-////////////getter-setter/////////////////7
+//Metodo que retorna un vector con las numeros primos de manera desendente(hace suo de algoritmo de seleccion)
+    public String darNumerosPrimos(){
+        String mensaje = "";
+        return mensaje;
+    }
+//Metodo qeu retorna le numeros multiplos de un numero x de manera ascendente(hace uso del algoritmo de insercion)
+////////////getter-setter/////////////////
 
     public int[][] getMatriz() {
         return matriz;
