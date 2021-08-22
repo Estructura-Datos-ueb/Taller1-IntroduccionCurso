@@ -24,4 +24,10 @@ public class Controller {
             System.out.println("\n");
         }
     }
+    
+    public void test(){
+    	System.out.println("Uno");
+    }
+    
+    
 }
