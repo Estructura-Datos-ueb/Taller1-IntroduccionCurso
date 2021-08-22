@@ -11,12 +11,14 @@ public class Controller {
 
     public Controller (){
         v = new VistaConsola();
-        System.out.println(Integer.parseInt(v.getTamano()));
         o = new Ordenamiento( Integer.parseInt(v.getTamano()));
-        mostrarVista();
+        v.mostrarInformacion("El tamaño de la matriz n X n es: "+Integer.parseInt(v.getTamano()));
+        mostrarMatriz();
+        o.buscarNumero(1);
+
     }
 
-    public void mostrarVista(){
+    public void mostrarMatriz(){
         for(int i=0;i<(Integer.parseInt(v.getTamano()));i++){
             for(int j=0;j<(Integer.parseInt(v.getTamano()));j++){
                 v.mostrarInformacion(o.matriz[i][j]+", ");
@@ -24,4 +26,5 @@ public class Controller {
             System.out.println("\n");
         }
     }
+
 }
