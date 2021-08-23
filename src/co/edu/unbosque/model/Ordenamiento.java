@@ -64,11 +64,104 @@ public class Ordenamiento {
         return mensaje;
     }
 //Metodo que retorna un vector con las numeros primos de manera desendente(hace suo de algoritmo de seleccion)
-    public String darNumerosPrimos(){
-        String mensaje = "";
-        return mensaje;
+    public String buscarPrimos(){
+        boolean primo = false;
+        ArrayList<Integer> primos = new ArrayList<>();
+
+        for (int i = 0; i < tamano; i++) {
+            for (int j = 0; j < tamano; j++) {
+                for (int k = 2; k < matriz[i][j] ; k++) {
+                    if(matriz[i][j] % k == 0) {
+                        primo = false;
+                        k = matriz[i][j];
+                    }else {
+                        primo = true;
+                    }
+                }
+                if (primo){
+                    primos.add(matriz[i][j]);
+                }
+
+            }
+
+        }
+        ordenamientoSeleccion(primos);
+        String resultado = "";
+        for (int i = 0; i < primos.size(); i++) {
+            resultado = resultado + "\n" + primos.get(i);
+
+        }
+
+        return resultado;
     }
-//Metodo qeu retorna le numeros multiplos de un numero x de manera ascendente(hace uso del algoritmo de insercion)
+
+    public ArrayList<Integer> buscarMultiplos(int n , int x){
+        int contador = 1;
+        ArrayList<Integer> lista = new ArrayList<>();
+        while (contador != x){
+            lista.add(n * contador);
+            contador++;
+
+        }
+
+        lista = ordenamientoInsercion(lista);
+
+        for (int i = 0; i < lista.size() ; i++) {
+            System.out.println(lista.get(i));
+        }
+
+        return lista;
+    }
+
+    public ArrayList<Integer> ordenamientoInsercion(ArrayList<Integer> numeros){
+
+        ArrayList<Integer> lista = new ArrayList<>();
+        int i, j;
+        int aux;
+        for (i = 1; i < numeros.size(); i++)
+        {
+        /* indice j es para explorar la sublista a[i-1]..a[0] buscando la
+        posicion correcta del elemento destino*/
+                    j = i;
+                    aux = numeros.get(i);
+        // se localiza el punto de inserción explorando hacia abajo
+                    while (j > 0 && aux < numeros.get(j-1))
+                    {
+        // desplazar elementos hacia arriba para hacer espacio
+                        numeros.set(j, numeros.get(j-1));
+                        j--;
+                    }
+            numeros.set(j, aux);
+                }
+
+
+        return numeros;
+    }
+
+    public ArrayList<Integer> ordenamientoSeleccion(ArrayList<Integer> primos){
+
+        int index, i, j, n;
+        n = primos.size();
+        for (i = 0; i < n-1; i++)
+        {
+            index = i;
+            for (j = i+1; j < n; j++)
+                if (primos.get(j) > primos.get(index))
+                    index = j;
+            if (i != index)
+                intercambiarNumeros(primos, i, index);
+        }
+
+        return primos;
+
+    }
+
+    public static void intercambiarNumeros(ArrayList<Integer> a, int i, int j)
+    {
+        int aux = a.get(i);
+        a.set(i, a.get(j));
+        a.set(j, aux);
+    }
 ////////////getter-setter/////////////////
 
     public int[][] getMatriz() {
