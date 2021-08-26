@@ -12,17 +12,17 @@ public class Controller {
     public Controller (){
         v = new VistaConsola();
         o = new Ordenamiento( Integer.parseInt(v.getTamano()));
-        v.mostrarInformacion("El tamaño de la matriz n X n es: "+Integer.parseInt(v.getTamano())+"\n" );
+        v.mostrarInformacion("El tamaï¿½o de la matriz n X n es: "+Integer.parseInt(v.getTamano())+"\n" );
         mostrarMatriz();
         
-        String menu = "Bienvenido al programa de Algoritmos de Ordenamiento y Selección\n"
-        + 	"Seleccione una opcion a Continuación:\n"
+        String menu = "Bienvenido al programa de Algoritmos de Ordenamiento y Selecciï¿½n\n"
+        + 	"Seleccione una opcion a Continuaciï¿½n:\n"
         		+ "1. Promedio de Todos los Numeros de la matriz\n"
         		+ "2. Buscar un numero usando Busqueda Binaria\n"
         		+ "3. Verificar si un numero Existe mas de m Veces\n"
         		+ "4. Retornar un vector con los primeros n numeros impares de la matriz ordenados Ascendentemente (Burbuja)\n"
-        		+ "5. Retornar un vector con todos los numeros primos en la matriz ordenados descendentemente (Selección)\n"
-        		+ "6. Retornar un arreglo con los primeros n multiplos de x ordenados ascendentemente (Inserción)\n";
+        		+ "5. Retornar un vector con todos los numeros primos en la matriz ordenados descendentemente (Selecciï¿½n)\n"
+        		+ "6. Retornar un arreglo con los primeros n multiplos de x ordenados ascendentemente (Inserciï¿½n)\n";
         
         try { 
         	Integer opcion = Integer.parseInt(v.leerDato(menu));
@@ -44,7 +44,8 @@ public class Controller {
       		case 3:
       			try {
       				Integer n = Integer.parseInt(v.leerDato("ingrese el numero que desea buscar en la matriz"));
-      				v.mostrarInformacion(o.buscarNumeroRepetido(n));
+					Integer n1 = Integer.parseInt(v.leerDato("ingrese el numero que de veces m que desa saber si esta repetido"));
+      				v.mostrarInformacion(o.buscarNumeroRepetido(n,n1));
 				} catch (Exception e) {
 					// TODO: handle exception
 					v.mostrarInformacion("Error: Valor Invalido");
@@ -79,12 +80,12 @@ public class Controller {
       			
 
       		default:
-      			v.mostrarInformacion("Opción Invalida");
+      			v.mostrarInformacion("Opciï¿½n Invalida");
       			break;
       		}
 		} catch (Exception e) {
 			// TODO: handle exception
-			v.mostrarInformacion("Error: Opción Invalida");
+			v.mostrarInformacion("Error: Opciï¿½n Invalida");
 		}
         
         
