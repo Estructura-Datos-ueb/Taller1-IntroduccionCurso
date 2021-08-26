@@ -19,15 +19,23 @@ public class Ordenamiento {
         for(int i=0;i<tamano;i++) {
             for(int j=0;j<tamano;j++) {
                 Random r = new Random();
-                double numeroM= r.nextInt(10);
+                double numeroM= r.nextInt(10000);
                 matriz[i][j] = (int) numeroM;
             }
         }
     }
 //Metodo para calcular el promedio de la matriz
-    public String calcularPromedio(){
-        String mensaje = "";
-        return mensaje;
+    public Integer calcularPromedio(){
+      Integer resultado = 0;
+      
+      for (int i = 0; i < matriz.length; i++) {
+		for (int j = 0; j < matriz.length; j++) {
+			resultado = resultado + matriz[i][j];
+		}
+	}
+      resultado = resultado / (matriz.length * matriz.length);
+      
+      return resultado;
     }
 //Metodo para calcular el promedio de la matriz
     public String buscarNumero(int numeroIngresado) {
@@ -86,17 +94,18 @@ public class Ordenamiento {
 
         }
         ordenamientoSeleccion(primos);
-        String resultado = "";
+        String resultado = "Numeros Primos Encontrados: \n";
         for (int i = 0; i < primos.size(); i++) {
-            resultado = resultado + "\n" + primos.get(i);
+            resultado = resultado  + primos.get(i)+ ", ";
 
         }
 
         return resultado;
     }
 
-    public ArrayList<Integer> buscarMultiplos(int n , int x){
+    public String  buscarMultiplos(int n , int x){
         int contador = 1;
+        String resultado = "Multiplos Encontrados: \n";
         ArrayList<Integer> lista = new ArrayList<>();
         while (contador != x){
             lista.add(n * contador);
@@ -107,10 +116,12 @@ public class Ordenamiento {
         lista = ordenamientoInsercion(lista);
 
         for (int i = 0; i < lista.size() ; i++) {
-            System.out.println(lista.get(i));
+            resultado = resultado + lista.get(i)+ ", ";
         }
-
-        return lista;
+        
+        
+        
+        return resultado;
     }
 
     public ArrayList<Integer> ordenamientoInsercion(ArrayList<Integer> numeros){
