@@ -9,20 +9,21 @@ public class VistaConsola {
     private String tamano;
 
     public VistaConsola() {
-        tamano =  JOptionPane.showInputDialog("Porfavor ingrese el tamaÃ±o de la matriz");
+        tamano =  JOptionPane.showInputDialog("Porfavor ingrese el tamaño de la matriz");
     }
     public void ingresarinformacion(String mensaje){
         tamano =  JOptionPane.showInputDialog(mensaje);
     }
 
     public void mostrarInformacion( String mensaje) {
-        System.out.print(mensaje);
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 
     public String leerDato(String mensaje) {
-        mostrarInformacion(mensaje);
-        //int n = leer.nextInt();
-        return tamano;
+    	String opcion = "";
+        opcion = JOptionPane.showInputDialog(mensaje);
+
+        return opcion;
     }
 
     public String getTamano() {
