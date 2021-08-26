@@ -42,6 +42,13 @@ public class Controller {
       			
       			break;
       		case 3:
+      			try {
+      				Integer n = Integer.parseInt(v.leerDato("ingrese el numero que desea buscar en la matriz"));
+      				v.mostrarInformacion(o.buscarNumeroRepetido(n));
+				} catch (Exception e) {
+					// TODO: handle exception
+					v.mostrarInformacion("Error: Valor Invalido");
+				}
 		
 		break;
       		case 4:
