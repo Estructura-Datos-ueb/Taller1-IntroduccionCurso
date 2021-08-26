@@ -24,7 +24,7 @@ public class Controller {
         		+ "5. Retornar un vector con todos los numeros primos en la matriz ordenados descendentemente (Selección)\n"
         		+ "6. Retornar un arreglo con los primeros n multiplos de x ordenados ascendentemente (Inserción)\n";
         
-        try {
+        try { 
         	Integer opcion = Integer.parseInt(v.leerDato(menu));
         	
         	  switch (opcion) {
