@@ -12,7 +12,7 @@ public class Controller {
     public Controller (){
         v = new VistaConsola();
         o = new Ordenamiento( Integer.parseInt(v.getTamano()));
-        v.mostrarInformacion("El tamaÃ±o de la matriz n X n es: "+Integer.parseInt(v.getTamano())+"\n");
+        v.mostrarInformacion("El tamaño de la matriz n X n es: "+Integer.parseInt(v.getTamano())+"\n" );
         mostrarMatriz();
         
         String menu = "Bienvenido al programa de Algoritmos de Ordenamiento y Selección\n"
@@ -52,6 +52,14 @@ public class Controller {
 		
 		break;
       		case 4:
+      			
+      			try {
+      				Integer n = Integer.parseInt(v.leerDato("ingrese el numero de impares que desea encontrar"));
+      				v.mostrarInformacion(o.buscarImpares(n));
+				} catch (Exception e) {
+					// TODO: handle exception
+					v.mostrarInformacion("Error: Valor Invalido");
+				}
 		
 		break;
       		case 5:
@@ -87,12 +95,14 @@ public class Controller {
 
     }
     public void mostrarMatriz(){
+    	String matriz = "";
         for(int i=0;i<(Integer.parseInt(v.getTamano()));i++){
             for(int j=0;j<(Integer.parseInt(v.getTamano()));j++) {
-                System.out.println((o.matriz[i][j] + ", "));
+            	matriz = matriz + ((o.matriz[i][j] + ", "));
             }
-            System.out.println("\n");
+            matriz = matriz +("\n");
         }
+        v.mostrarInformacion(matriz);
 
     }
 

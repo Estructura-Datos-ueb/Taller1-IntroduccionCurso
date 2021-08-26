@@ -123,6 +123,55 @@ public class Ordenamiento {
         
         return resultado;
     }
+    
+public String buscarImpares(int numeroIngresado){
+    	
+    	int Contador = 0;
+        
+        int [] Impares = new int[numeroIngresado];
+        
+        for(int i=0;i<=(tamano-1);i++) {
+            for(int j=0;j<=(tamano-1);j++) {
+            	int Valor = matriz[i][j];
+            	
+            	if(Valor%2!=0 && Contador != numeroIngresado) {
+            		
+            		Impares[Contador] = Valor;
+                	
+                	Contador = Contador + 1;
+            		
+            	}
+            	
+            	
+            }
+        }
+        
+        
+        int i, j;
+		for (i = 0 ; i < Impares.length-1; i++) {
+			for (j = i+1 ; j < Impares.length; j++) {
+				if (Impares[i] > Impares[j]){
+						intercambiar(Impares, i, j);
+					}
+			}
+		}
+        
+		String Valores = "";
+		for (int a = 0 ; a < Impares.length; a++) {
+			int Valor = Impares[a];
+			Valores = Valores + "\n" + Valor;
+		}
+        
+        return "\nLos numeros impares encontrados son: \n" + Valores;
+    	
+    }
+
+	public static void intercambiar(int []a, int i, int j)
+	{
+		 int aux = a[i];
+		 a[i] = a[j];
+		 a[j]= aux ;
+	}
 
     public ArrayList<Integer> ordenamientoInsercion(ArrayList<Integer> numeros){
 
