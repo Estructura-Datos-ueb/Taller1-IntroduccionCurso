@@ -18,6 +18,10 @@ public class VistaConsola {
     public void mostrarInformacion( String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje);
     }
+    
+    public Integer mostrarOpcion(String mensaje) {
+    	return JOptionPane.showConfirmDialog(null, mensaje);
+    }
 
     public String leerDato(String mensaje) {
     	String opcion = "";

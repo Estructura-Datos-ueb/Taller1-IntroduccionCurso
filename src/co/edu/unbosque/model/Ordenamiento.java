@@ -57,7 +57,7 @@ public class Ordenamiento {
     }
 //Metodo para calcular el promedio de la matriz
     public String buscarNumeroRepetido(int numeroIngresado, int numeroM) {
-        String mensaje = "El numero"+numeroIngresado+" no se encuentra repetido "+numeroM+"en la matriz";
+        String mensaje = "El numero "+numeroIngresado+" no se encuentra repetido  "+numeroM+" veces  en la matriz";
         int contador=0;
         for(int i=0;i<=(tamano-1);i++) {
             for(int j=0;j<=(tamano-1);j++) {
@@ -66,7 +66,7 @@ public class Ordenamiento {
                 }
             }
             if(contador==numeroM){
-                mensaje="El numero "+numeroIngresado+" si encuentra repetido "+numeroM+" en la matriz";
+                mensaje="El numero "+numeroIngresado+" si encuentra repetido "+numeroM+" veces en la matriz";
             }
         }
         return mensaje;
