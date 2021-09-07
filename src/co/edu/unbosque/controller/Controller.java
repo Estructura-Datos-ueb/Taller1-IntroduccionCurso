@@ -8,36 +8,51 @@ public class Controller {
     private VistaConsola v;
     private Ordenamiento o;
     int numerof;
+    int exit;
 
-    public Controller (){
-        
-        
-        try {
-        	v = new VistaConsola();
-        	o = new Ordenamiento( Integer.parseInt(v.getTamano()));
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.exit(0);
+    public Controller () {
+		v = new VistaConsola();
+		o = new Ordenamiento();
+		createMatriz();
+    	star();
+
+	}
+
+	public boolean createMatriz(){
+		boolean aux=false;
+    	try{
+    		v.ingresarinformacion("Porfavor ingrese el tamano de la matriz");
+			o.setTamano(Integer.parseInt(v.getTamano()));
+    		o.llenarMatriz();
+			v.mostrarInformacion("El tamano de la matriz n X n es: "+Integer.parseInt(v.getTamano())+"\n" );
+			int option = v.mostrarOpcion("Desea  imprimir la matriz? (puede demorarse mucho si su tamano es muy grande)");
+			if(option == 0) {
+				mostrarMatriz();
+				mostrarMatrizConsola();
+				aux=true;
+			}
+		}catch (Exception  e){
+    		v.mostrarInformacion("Porfavor  ingrese la infomacion correctamente");
+    		createMatriz();
 		}
-        v.mostrarInformacion("El tamaño de la matriz n X n es: "+Integer.parseInt(v.getTamano())+"\n" );
-        int option = v.mostrarOpcion("Desea  imprimir la matriz? (puede demorarse mucho si su tamaño es muy grande)");
-        if(option == 0) {
-        	 mostrarMatriz();
-        }
-       
-        
+		return aux;
+	}
+
+    public void star(){
+		exit=0;
         String menu = "Bienvenido al programa de Algoritmos de Ordenamiento y Seleccion\n"
-        + 	"Seleccione una opcion a Continuación"
+        		+"Seleccione una opcion a Continuacion\n"
         		+ "1. Promedio de Todos los Numeros de la matriz\n"
         		+ "2. Buscar un numero usando Busqueda Binaria\n"
         		+ "3. Verificar si un numero Existe mas de m Veces\n"
         		+ "4. Retornar un vector con los primeros n numeros impares de la matriz ordenados Ascendentemente (Burbuja)\n"
         		+ "5. Retornar un vector con todos los numeros primos en la matriz ordenados descendentemente (Seleccion)\n"
-        		+ "6. Retornar un arreglo con los primeros n multiplos de x ordenados ascendentemente (Insercion)\n";
-        
+        		+ "6. Retornar un arreglo con los primeros n multiplos de x ordenados ascendentemente (Insercion)\n"
+				+ "7. Para listar la matriz\n"
+				+ "8. Para salir del programa\n";
         try { 
         	Integer opcion = Integer.parseInt(v.leerDato(menu));
-        	
+
         	  switch (opcion) {
       		case 1:
       			v.mostrarInformacion("Promedio de todos los numeros de la matriz: "+String.valueOf(o.calcularPromedio()));
@@ -49,8 +64,8 @@ public class Controller {
 				} catch (Exception e) {
 					// TODO: handle exception
 					v.mostrarInformacion("Error: Valor Invalido");
+					star();
 				}
-      			
       			break;
       		case 3:
       			try {
@@ -60,9 +75,10 @@ public class Controller {
 				} catch (Exception e) {
 					// TODO: handle exception
 					v.mostrarInformacion("Error: Valor Invalido");
+					star();
 				}
-		
-		break;
+      			break;
+
       		case 4:
       			
       			try {
@@ -71,12 +87,12 @@ public class Controller {
 				} catch (Exception e) {
 					// TODO: handle exception
 					v.mostrarInformacion("Error: Valor Invalido");
+					star();
 				}
-		
-		break;
+				break;
       		case 5:
       			v.mostrarInformacion(o.buscarPrimos());		
-		break;
+				break;
       		case 6:
       			try {
 					Integer n1 = Integer.parseInt(v.leerDato("Ingrese el numero al cual desee encontrarle sus multiplos"));
@@ -85,27 +101,34 @@ public class Controller {
 				} catch (Exception e) {
 					// TODO: handle exception
 					v.mostrarInformacion("Error: Valor Invalido");
+					star();
 				}
-      			
       			break;
-      			
+      		case 7:
+      			mostrarMatriz();
+      			break;
+
+			case 8:
+				exit=1;
+				break;
 
       		default:
-      			v.mostrarInformacion("Opción Invalida");
+      			v.mostrarInformacion("Opcion Invalida");
+				star();
       			break;
+
       		}
 		} catch (Exception e) {
 			// TODO: handle exception
-			v.mostrarInformacion("Error: Opción Invalida");
+			v.mostrarInformacion("Error: Opcion Invalida");
 		}
-        
-        
-      
-        
-        
-        
-
+		exitStart();
     }
+    public void exitStart(){
+    	if(exit!=1){
+    		star();
+		}
+	}
     public void mostrarMatriz(){
     	String matriz = "";
         for(int i=0;i<(Integer.parseInt(v.getTamano()));i++){
@@ -115,7 +138,16 @@ public class Controller {
             matriz = matriz +("\n");
         }
         v.mostrarInformacion(matriz);
-
     }
+	public void mostrarMatrizConsola(){
+		String matriz = "";
+		for(int i=0;i<(Integer.parseInt(v.getTamano()));i++){
+			for(int j=0;j<(Integer.parseInt(v.getTamano()));j++) {
+				matriz = matriz + ((o.matriz[i][j] + ", "));
+			}
+			matriz = matriz +("\n");
+		}
+		v.mostrarInformacionConsole(matriz);
+	}
 
 }

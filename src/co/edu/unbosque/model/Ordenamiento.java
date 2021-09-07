@@ -8,18 +8,16 @@ public class Ordenamiento {
     public int [][] matriz;
     private int  tamano;
 
-    public Ordenamiento (int tamano) {
+    public Ordenamiento () {
         this.tamano= tamano;
-        matriz = new int[tamano][tamano];
-
-        llenarMatriz();
     }
 
     public  void llenarMatriz() {
+        matriz = new int[tamano][tamano];
         for(int i=0;i<tamano;i++) {
             for(int j=0;j<tamano;j++) {
                 Random r = new Random();
-                double numeroM= r.nextInt(10000);
+                double numeroM= r.nextInt(17);
                 matriz[i][j] = (int) numeroM;
             }
         }
@@ -55,6 +53,7 @@ public class Ordenamiento {
         }
         return mensaje;
     }
+
 //Metodo para calcular el promedio de la matriz
     public String buscarNumeroRepetido(int numeroIngresado, int numeroM) {
         String mensaje = "El numero "+numeroIngresado+" no se encuentra repetido  "+numeroM+" veces  en la matriz";
@@ -139,10 +138,7 @@ public String buscarImpares(int numeroIngresado){
             		Impares[Contador] = Valor;
                 	
                 	Contador = Contador + 1;
-            		
             	}
-            	
-            	
             }
         }
         
