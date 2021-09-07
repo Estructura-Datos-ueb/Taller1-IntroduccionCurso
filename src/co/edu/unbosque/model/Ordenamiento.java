@@ -85,88 +85,100 @@ public class Ordenamiento {
                         primo = true;
                     }
                 }
-                if (primo){
-                    primos.add(matriz[i][j]);
+                if(matriz[i][j]!=1){
+                    if(matriz[i][j]!=0){
+                        if (primo){
+                            primos.add(matriz[i][j]);
+                        }
+                    }
+
                 }
 
             }
-
         }
         ordenamientoSeleccion(primos);
         String resultado = "Numeros Primos Encontrados: \n";
         for (int i = 0; i < primos.size(); i++) {
             resultado = resultado  + primos.get(i)+ ", ";
-
         }
-
         return resultado;
     }
 
-    public String  buscarMultiplos(int n , int x){
+    public String buscarMultiplos(int n , int x){
         int contador = 1;
+        int contador1 = 0;
+        int valor= 0;
         String resultado = "Multiplos Encontrados: \n";
         ArrayList<Integer> lista = new ArrayList<>();
-        while (contador != x){
-            lista.add(n * contador);
-            contador++;
-
+        for(int i=0;i<=(tamano-1);i++) {
+            for (int j = 0; j <= (tamano - 1); j++) {
+                valor = matriz[i][j];
+                if(valor%n==0){
+                    if(valor!=0){
+                        if(valor!=1){
+                            lista.add(valor);
+                            System.out.print(lista.get(contador1)+", ");
+                            System.out.println( "");
+                            contador1++;
+                        }
+                    }
+                }
+            }
         }
-
-        lista = ordenamientoInsercion(lista);
-
-        for (int i = 0; i < lista.size() ; i++) {
-            resultado = resultado + lista.get(i)+ ", ";
+        ordenamientoInsercion(lista);
+        String Valores = "";
+        for (int a = 0 ; a < x; a++) {
+            int Valor1 = lista.get(a);
+            Valores = Valores + "\n" + Valor1;
         }
-        
-        
-        
-        return resultado;
+        return "\nLos numeros impares encontrados son: \n" + Valores;
+
     }
     
-public String buscarImpares(int numeroIngresado){
-    	
-    	int Contador = 0;
-        
-        int [] Impares = new int[numeroIngresado];
+    public String buscarImpares(int numeroIngresado){
+
+    	int contador = 0;
+        ArrayList<Integer> impares = new ArrayList<Integer>();
+        int [] Impares ;
+        Integer Valor= 0;
         
         for(int i=0;i<=(tamano-1);i++) {
             for(int j=0;j<=(tamano-1);j++) {
-            	int Valor = matriz[i][j];
-            	
-            	if(Valor%2!=0 && Contador != numeroIngresado) {
-            		
-            		Impares[Contador] = Valor;
-                	
-                	Contador = Contador + 1;
+            	 Valor = matriz[i][j];
+            	if(Valor%2!=0 ) {
+                    impares.add(Valor);
+
             	}
             }
         }
-        
-        
-        int i, j;
-		for (i = 0 ; i < Impares.length-1; i++) {
-			for (j = i+1 ; j < Impares.length; j++) {
-				if (Impares[i] > Impares[j]){
-						intercambiar(Impares, i, j);
-					}
-			}
-		}
-        
+        Impares=new int[impares.size()];
+        for(int v=0;v<impares.size();v++){
+            Impares[v]=impares.get(v);
+        }
+        algoritmoBurbuja(Impares);
 		String Valores = "";
-		for (int a = 0 ; a < Impares.length; a++) {
-			int Valor = Impares[a];
-			Valores = Valores + "\n" + Valor;
+		for (int a = 0 ; a < numeroIngresado; a++) {
+			int Valor1 = Impares[a];
+			Valores = Valores + "\n" + Valor1;
 		}
-        
         return "\nLos numeros impares encontrados son: \n" + Valores;
-    	
     }
 
-	public static void intercambiar(int []a, int i, int j)
-	{
-		 int aux = a[i];
-		 a[i] = a[j];
-		 a[j]= aux ;
+	public static void algoritmoBurbuja(int[] arreglo) {
+        for (int x = 0; x < arreglo.length; x++) {
+            // Aquí "y" se detiene antes de llegar
+            // a length - 1 porque dentro del for, accedemos
+            // al siguiente elemento con el índice actual + 1
+            for (int y = 0; y < arreglo.length - 1; y++) {
+                int elementoActual = arreglo[y],
+                        elementoSiguiente = arreglo[y + 1];
+                if (elementoActual > elementoSiguiente) {
+                    // Intercambiar
+                    arreglo[y] = elementoSiguiente;
+                    arreglo[y + 1] = elementoActual;
+                }
+            }
+        }
 	}
 
     public ArrayList<Integer> ordenamientoInsercion(ArrayList<Integer> numeros){
@@ -207,7 +219,6 @@ public String buscarImpares(int numeroIngresado){
             if (i != index)
                 intercambiarNumeros(primos, i, index);
         }
-
         return primos;
 
     }
