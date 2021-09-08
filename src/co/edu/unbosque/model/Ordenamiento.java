@@ -117,8 +117,6 @@ public class Ordenamiento {
                     if(valor!=0){
                         if(valor!=1){
                             lista.add(valor);
-                            System.out.print(lista.get(contador1)+", ");
-                            System.out.println( "");
                             contador1++;
                         }
                     }
