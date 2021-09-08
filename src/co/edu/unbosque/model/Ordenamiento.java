@@ -105,7 +105,7 @@ public class Ordenamiento {
     }
 
     public String buscarMultiplos(int n , int x){
-        int contador = 1;
+        int aux = 0;
         int contador1 = 0;
         int valor= 0;
         String resultado = "Multiplos Encontrados: \n";
@@ -127,9 +127,15 @@ public class Ordenamiento {
         }
         ordenamientoInsercion(lista);
         String Valores = "";
-        for (int a = 0 ; a < x; a++) {
-            int Valor1 = lista.get(a);
-            Valores = Valores + "\n" + Valor1;
+        try{
+            for (int a = 0 ; a < x; a++) {
+                int Valor1 = lista.get(a);
+                Valores = Valores + "\n" + Valor1;
+                aux++;
+            }
+        }catch (Exception e){
+            Valores = "Solo hay "+aux+" numeros multiplos de "+n+"\n" +Valores ;
+            return  Valores;
         }
         return "\nLos numeros impares encontrados son: \n" + Valores;
 
@@ -138,6 +144,7 @@ public class Ordenamiento {
     public String buscarImpares(int numeroIngresado){
 
     	int contador = 0;
+    	int aux=0;
         ArrayList<Integer> impares = new ArrayList<Integer>();
         int [] Impares ;
         Integer Valor= 0;
@@ -157,10 +164,17 @@ public class Ordenamiento {
         }
         algoritmoBurbuja(Impares);
 		String Valores = "";
-		for (int a = 0 ; a < numeroIngresado; a++) {
-			int Valor1 = Impares[a];
-			Valores = Valores + "\n" + Valor1;
-		}
+        try{
+            for (int a = 0 ; a < numeroIngresado; a++) {
+                int Valor1 = Impares[a];
+                Valores = Valores + "\n" + Valor1;
+                aux++;
+            }
+        } catch (Exception e) {
+            Valores = "Solo hay "+aux+" numeros impares"+"\n" +Valores ;
+            return  Valores;
+        }
+
         return "\nLos numeros impares encontrados son: \n" + Valores;
     }
 
@@ -220,7 +234,6 @@ public class Ordenamiento {
                 intercambiarNumeros(primos, i, index);
         }
         return primos;
-
     }
 
     public static void intercambiarNumeros(ArrayList<Integer> a, int i, int j)
@@ -237,11 +250,9 @@ public class Ordenamiento {
     public void setMatriz(int[][] matriz) {
         this.matriz = matriz;
     }
-
     public int getTamano() {
         return tamano;
     }
-
     public void setTamano(int tamano) {
         this.tamano = tamano;
     }
